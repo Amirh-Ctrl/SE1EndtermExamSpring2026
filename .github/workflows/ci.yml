@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - test
+  pull_request:
+    branches:
+      - main
+      - test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 40031701
+    env:
+      PYTHONPATH: src
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit and acceptance tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Write coverage CSV
+        run: python tools/write_coverage_csv.py
+
+      - name: Upload coverage CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: 40031701/coverage_report.csv
+
