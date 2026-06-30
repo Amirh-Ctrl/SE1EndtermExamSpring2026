@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage_report.csv
+data/
+profiles/
+*.db
+*.sqlite
+

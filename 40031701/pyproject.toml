@@ -1,0 +1,14 @@
+[project]
+name = "secure-messenger-40031701"
+version = "1.0.0"
+description = "Educational end-to-end encrypted messenger for the SE1 end-term practical exam."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "40031701" }
+]
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"
+
