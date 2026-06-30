@@ -1,0 +1,17 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t secure-messenger-40031701:${{ github.sha }} 40031701
+
